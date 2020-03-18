@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Chore TV</a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Tasks", tasks_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Chores", chores_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Children", children_path, class: "nav-link" %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <p id="notice"><%= notice %></p>
+
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+

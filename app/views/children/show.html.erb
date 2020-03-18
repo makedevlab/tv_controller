@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong>
+  <%= @child.name %>
+</p>
+
+<% if @child.photo.attached? %>
+<p>
+  <%= image_tag @child.photo.variant(resize: '100x100') %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

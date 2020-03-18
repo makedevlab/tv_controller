@@ -1,0 +1,55 @@
+
+<style>
+body {
+  background-color: #000;
+  color: #fff;
+  }
+</style>
+
+<% if @chores.empty? %>
+  <h1>
+    All done, you can watch tv now!
+  </h1>
+  
+
+<% else %>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @children.each do |child| %>
+      <div class="col" style="text-align: center">
+        <h2><%= child.name %></h2>
+        <p>
+          <% if child.photo.attached? %>
+            <%= image_tag child.photo.variant(resize: '200x200'), size: '200x170' %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @children.each do |child| %>
+      <div class="col" style="text-align: center">
+        <hr />
+
+        <% child.chores.incomplete.each do |chore| %>
+          <p class="choreBox">
+            <h3><%= chore.task.name %></h3>
+            <% if chore.task.thumbnail.attached? %>
+              <br />
+              <%= image_tag chore.task.thumbnail.variant(resize: '300x300'), size: '300x121' %>
+            <% end %>
+            <hr />
+          </p>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+  setTimeout("location.reload(true);",3000);
+</script>

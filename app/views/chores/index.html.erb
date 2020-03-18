@@ -1,0 +1,38 @@
+<h1>Chores</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Child</th>
+      <th>Name</th>
+      <th>Complete</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chores.each do |chore| %>
+      <tr>
+        <td><%= chore.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= chore.child.name %></td>
+        <td><%= link_to chore.task.name, chore %></td>
+        <td>
+          <%= link_to toggle_complete_chore_path(chore) do %>
+            <% if chore.complete %>
+              <%= image_tag "icons/check-circle.svg" %>
+            <% else %>
+              <%= image_tag "icons/circle.svg" %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_chore_path(chore), class: 'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chore', new_chore_path, class: 'btn btn-primary' %>
